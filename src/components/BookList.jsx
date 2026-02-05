@@ -1,14 +1,12 @@
 import SingleBook from "./SingleBook";
 import { Container } from "react-bootstrap";
-import Row from "react-bootstrap";
+import { Row } from "react-bootstrap";
 import Button from 'react-bootstrap/Button';
 
 function BookList(props) {
     return (
         <>
-            <Container>
-                <Button variant="light">Light</Button>
-            </Container>
+            {/* valuatare se aggiungere tasti per categorie */}
             <Container className="my-4">
                 <Row>
                     {

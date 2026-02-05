@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { Card } from "react-bootstrap";
-import Col from "react-bootstrap";
-import CommentArea from "./CommentArea.jsx";
+import { Col } from "react-bootstrap";
+// import CommentArea from "./CommentArea.jsx";
 
 class SingleBook extends Component {
 
@@ -33,5 +33,4 @@ class SingleBook extends Component {
         )
     }
 }
-
 export default SingleBook;
