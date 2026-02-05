@@ -8,7 +8,7 @@ const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTczM2Q0Njg1ZTNiMT
 
 const initialComment = {
     comment: "",
-    rate: 1,
+    rate: "1",
     elementId: ""
 }
 
@@ -18,7 +18,7 @@ class AddComment extends Component {
         newComment: initialComment
     }
 
-    addComment() {
+    addComment = () => {
 
         fetch(fetchURL, {
             method: "POST",
@@ -53,7 +53,7 @@ class AddComment extends Component {
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                     <Form.Label>Lascia un commento</Form.Label>
                     <Form.Control as="textarea" rows={5}
-                        value={this.state.comment}
+                        value={this.state.newComment.comment}
                         onChange={(e) => {
                             this.setState({
                                 newComment: {
