@@ -1,13 +1,53 @@
 import { Component } from "react";
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+
+// variabili del componente
+const fetchURL = `https://striveschool-api.herokuapp.com/api/comments/`;
+const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTczM2Q0Njg1ZTNiMTAwMTViNWVkOTAiLCJpYXQiOjE3NzAzMDMyOTYsImV4cCI6MTc3MTUxMjg5Nn0.J_uMfQej1JyBhgkd_AVpMD9K7vyOqzIbX-ddI3JhOLc"
+
+const initialComment = {
+    comment: "",
+    rate: 1,
+    elementId: ""
+}
 
 class AddComment extends Component {
+
+    state = {
+        newComment: initialComment
+    }
+
+    addComment() {
+
+        fetch(fetchURL, {
+            method: "POST",
+            body: JSON.stringify(this.state.newComment),
+            headers: {
+                "content-type": "application/json",
+                Authorization: "Bearer " + key
+            }
+        })
+            .then((res) => {
+                if (res.ok) {
+                    alert("Commento aggiunto con successo")
+                    this.setState({ newComment: initialComment })
+                    this.props.refreshComments()
+                    return res.json()
+                } else {
+                    throw new Error("Errore nell'aggiunta del commento")
+                }
+            })
+            .catch((err) => { console.log(err) })
+    }
 
     render() {
         return (
             <Form onSubmit={(e) => {
                 e.preventDefault();
                 this.addComment();
-            }}>
+            }}
+            >
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                     <Form.Label>Lascia un commento</Form.Label>
                     <Form.Control as="textarea" rows={5}
@@ -49,3 +89,5 @@ class AddComment extends Component {
         )
     }
 }
+
+export default AddComment;
