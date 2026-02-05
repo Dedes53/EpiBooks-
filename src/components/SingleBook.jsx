@@ -4,6 +4,10 @@ import Col from "react-bootstrap";
 import CommentArea from "./CommentArea.jsx";
 
 class SingleBook extends Component {
+
+    state = {
+        selected: false
+    }
     render() {
         return (
             <>
@@ -21,8 +25,7 @@ class SingleBook extends Component {
                             </div>
                         </Card.Body>
                     </Card>
-
-                    {this.state.selected && <CommentArea asin={this.props.asin} />}
+                    {/* {this.state.selected && <CommentArea asin={this.props.asin} />} */}
                 </Col>
 
 
