@@ -1,4 +1,6 @@
 import { Component } from "react";
+import CommentsList from "./CommentsList";
+import AddComment from "./AddComment.jsx";
 
 // variabili componente
 const fetchURL = `https://striveschool-api.herokuapp.com/api/comments/`;
