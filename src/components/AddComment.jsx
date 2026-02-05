@@ -30,13 +30,16 @@ class AddComment extends Component {
         })
             .then((res) => {
                 if (res.ok) {
-                    alert("Commento aggiunto con successo")
-                    this.setState({ newComment: initialComment })
-                    this.props.refreshComments()
-                    return res.json()
+                    alert("Commento aggiunto con successo");
+                    this.setState({ newComment: initialComment });
+                    return res.json();
                 } else {
                     throw new Error("Errore nell'aggiunta del commento")
                 }
+            })
+            .then((data) => {
+                console.log(data)
+                this.props.refreshComments()
             })
             .catch((err) => { console.log(err) })
     }
@@ -46,8 +49,7 @@ class AddComment extends Component {
             <Form onSubmit={(e) => {
                 e.preventDefault();
                 this.addComment();
-            }}
-            >
+            }}>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                     <Form.Label>Lascia un commento</Form.Label>
                     <Form.Control as="textarea" rows={5}

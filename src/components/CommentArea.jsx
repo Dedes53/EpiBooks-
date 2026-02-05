@@ -12,7 +12,7 @@ class CommentArea extends Component {
         comments: []
     }
 
-    getComments() {
+    getComments = () => {
 
         fetch(fetchURL + this.props.asin, {
             headers: {
